@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="order by dede58.com"/>
+    <title>小米商城</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+        .color {
+            display: none;
+            background: white;
+            height: 350px;
+            width: 300px;
+        }
+    </style>
+    <script>
+
+        $(function () {
+            $.ajax({
+
+                url: "/product/findProductByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dp01").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='40px' height='40px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+
+            $.ajax({
+
+                url: "/product/findProductByCid01",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dp02").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='40px' height='40px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>");
+                            if (index <= 4) {
+                                $("#sj").append(
+                                    "<div class=\"mingxing fl\">\n" +
+                                    "            <div class=\"sub_mingxing\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" alt=\"\"></a></div>\n" +
+                                    "            <div class=\"pinpai\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                                    "            <div class=\"youhui\">5月9日-21日享花呗12期分期免息</div>\n" +
+                                    "            <div class=\"jiage\">" + product.price + "元起</div>\n" +
+                                    "        </div>"
+                                )
+                            }
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 电视
+             */
+            $.ajax({
+
+                url: "/product/findTvByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dt01").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>");
+                            if (index <= 4) {
+                                $("#jd").append(
+                                    "<div class=\"remen fl\">\n" +
+                                    "                <div class=\"xinpin\"><span>新品</span></div>\n" +
+                                    "                <div class=\"tu\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" width='150px' height='150px'></a></div>\n" +
+                                    "                <div class=\"miaoshu\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                                    "                <div class=\"jiage\">" + product.price + "元</div>\n" +
+                                    "                <div class=\"pingjia\">372人评价</div>\n" +
+                                    "                <div class=\"piao\">\n" +
+                                    "                    <a href=\"\">\n" +
+                                    "                        <span>发货速度很快！很配小米6！</span>\n" +
+                                    "                        <span>来至于mi狼牙的评价</span>\n" +
+                                    "                    </a>\n" +
+                                    "                </div>\n" +
+                                    "            </div>"
+                                )
+                            }
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 电视
+             */
+            $.ajax({
+
+                url: "/product/findTvByCid01",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dt02").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 电脑01
+             */
+            $.ajax({
+
+                url: "/product/findPcByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dpc01").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 电脑02
+             */
+            $.ajax({
+
+                url: "/product/findPcByCid01",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dpc02").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+
+            /**
+             * 家电
+             */
+            $.ajax({
+
+                url: "/product/findFurnitureByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#df01").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>");
+
+                            if (index <= 3) {
+                                $("#jd02").append(
+                                    "<div class=\"remen fl\">\n" +
+                                    "                <div class=\"xinpin\"><span style=\"background:#fff\"></span></div>\n" +
+                                    "                <div class=\"tu\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" width='150px' height='150px'></a></div>\n" +
+                                    "                <div class=\"miaoshu\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                                    "                <div class=\"jiage\">" + product.price + "元</div>\n" +
+                                    "                <div class=\"pingjia\">372人评价</div>\n" +
+                                    "            </div>"
+                                )
+                            }
+                        })
+                        $("#jd02").append(
+                            "<div class=\"remenlast fr\">\n" +
+                            "                <div class=\"hongmi\"><a href=\"ProductItem.html?id=107\"><img src=\"./image/T1OVC_ByY_1RXrhCrK!220x220.jpg\" alt=\"\" width='234px' height='150px'></a></div>\n" +
+                            "                <div class=\"liulangengduo\"><a href=\"liebiao.html?id=5\"><img src=\"./image/Snipaste_2019-08-02_10-11-48.png\" alt=\"\" width='234px' height='150px'></a></div>\n" +
+                            "            </div>"
+                        )
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 家电
+             */
+            $.ajax({
+
+                url: "/product/findFurnitureByCid01",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#df02").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 查询路由器
+             */
+            $.ajax({
+
+                url: "/product/findRouterByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#lyq01").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 查询路由器
+             */
+            $.ajax({
+
+                url: "/product/findRouterByCid01",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#lyq02").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+                        })
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 查询配件
+             */
+
+            $.ajax({
+
+                url: "/product/findPartByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#dypj01").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 健康儿童
+             */
+            $.ajax({
+
+                url: "/product/findChildByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#child").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 耳机音响
+             */
+            $.ajax({
+
+                url: "/product/findHeadsetByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#headSet").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+
+            /**
+             * 生活箱包
+             */
+            $.ajax({
+
+                url: "/product/findBoxByCid",
+
+                type: "GET",
+
+                dataType: "json",
+
+                statusCode: {
+                    200: function (data) {
+
+                        $(data).each(function (index, product) {
+
+                            $("#boxId").append("<div>\n" +
+                                "                            <div class=\"xuangou_left fl\">\n" +
+                                "                                <a href=\"ProductItem.html?id=" + product.pid + "\">\n" +
+                                "                                    <div class=\"img fl\"><img src='" + product.picture + "' width='25px' height='25px' alt=\"\"></div>\n" +
+                                "                                    <span class=\"fl\">" + product.pname + "</span>\n" +
+                                "                                    <div class=\"clear\"></div>\n" +
+                                "                                </a>\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"xuangou_right fr\"><a href='ProductItem.html?id=" + product.pid + "'>选购</a></div>\n" +
+                                "                            <div class=\"clear\"></div>\n" +
+                                "                        </div>")
+
+
+                        })
+
+                    },
+                    500: function () {
+                        alert("网络异常")
+                    }
+
+
+                }
+
+
+            })
+        })
+    </script>
+</head>
+<body>
+<!-- start header -->
+<header>
+    <div class="top center">
+        <div class="left fl">
+            <ul>
+                <li><a href="http://www.mi.com/" target="_blank">小米商城</a></li>
+                <li>|</li>
+                <li><a href="">MIUI</a></li>
+                <li>|</li>
+                <li><a href="">米聊</a></li>
+                <li>|</li>
+                <li><a href="">游戏</a></li>
+                <li>|</li>
+                <li><a href="">多看阅读</a></li>
+                <li>|</li>
+                <li><a href="">云服务</a></li>
+                <li>|</li>
+                <li><a href="">金融</a></li>
+                <li>|</li>
+                <li><a href="">小米商城移动版</a></li>
+                <li>|</li>
+                <li><a href="">问题反馈</a></li>
+                <li>|</li>
+                <li><a href="">Select Region</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <script>
+            $(function () {
+                $.ajax({
+                    url: "/user/getSessionByLoginU",
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != "") {
+                            $("#login01").html(
+                                "<li>欢迎您！" + data.username + "</li>\n" +
+                                "                    <li>|</li>\n" +
+                                "                    <li><a href=\"./register.html\" target=\"_blank\">注册</a></li>\n" +
+                                "                    <li>|</li>\n" +
+                                "                    <li><a href=\"./self_info.html\" target=\"_blank\">个人中心</a></li>\n" +
+                                "                    <li>|</li>\n" +
+                                "                    <li><a href=\"\">消息通知</a></li>\n" +
+                                "                    <li>|</li>\n" +
+                                "                    <li><a href=\"javascript:loginOut()\">退出登录</a></li>"
+                            )
+                        }
+                    }
+                })
+            })
+
+            function loginOut() {
+                $.ajax({
+                    url: "/user/loginOut",
+                    type: "get"
+                })
+                location.href = "login.html"
+            }
+        </script>
+        <div class="right fr">
+            <div class="gouwuche fr"><a href="car.html">购物车</a></div>
+            <div class="fr">
+                <ul id="login01">
+                    <li><a href="./login.html" target="_blank">登录</a></li>
+                    <li>|</li>
+                    <li><a href="./register.html" target="_blank">注册</a></li>
+                    <li>|</li>
+                    <li><a href="./self_info.html" target="_blank">个人中心</a></li>
+                    <li>|</li>
+                    <li><a href="">消息通知</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>
+<!--end header -->
+
+<!-- start banner_x -->
+<div class="banner_x center">
+    <a href="index.html" target="_blank">
+        <div class="logo fl"></div>
+    </a>
+    <a href="">
+        <div class="ad_top fl"></div>
+    </a>
+    <div class="nav fl">
+        <ul id="u01">
+            <li><a href="liebiao.html?id=1">小米手机</a></li>
+            <li><a href="liebiao.html?id=3">电视</a></li>
+            <li><a href="liebiao.html?id=4">笔记本</a></li>
+            <li><a href="liebiao.html?id=5">家电</a></li>
+            <li><a href="liebiao.html?id=6">路由器</a></li>
+            <li><a href="liebiao.html?id=7">智能硬件</a></li>
+            <li><a href="liebiao.html?id=8">配件</a></li>
+            <li><a href="liebiao.html?id=10">耳机音箱</a></li>
+        </ul>
+    </div>
+    <script>
+        //对搜索框的有没有内容的判断
+        var sn01 = $("#search").val();
+        if (sn01 == "" || sn01 == null || sn01=="undefined") {
+            $("#contents").prop("style","display: none")
+            $("#contents").hide();
+        } else {
+            $("#contents").prop("style","display: inline-block")
+            $("#contents").show();
+        }
+
+        //模糊查询键盘抬起
+        function searchs() {
+            //顺序 没有展示
+            var sn01 = $("#search").val();
+            if (sn01 == "" || sn01 == null || sn01=="undefined") {
+                $("#contents").hide();
+                $("#contents").prop("style","display: none")
+            } else {
+                $("#contents").show();
+                $("#contents").prop("style","display: inline-block")
+            }
+            $.ajax({
+                url: "/product/fproduct/" + $("#search").val(),
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#contents").html("")
+                    $(data).each(function (index, ele) {
+                        $("#contents").append(" <div><a href='ProductItem.html?pid=" + ele.pid + "'><img src='"+ele.picture+"' width='20px' height='20px'>" + ele.pname + "</a></div>")
+
+                        $("#contents div").mouseover(function () {
+                            $(this).css("background-color", "blue")
+                        });
+                        $("#contents div").mouseout(function () {
+                            $(this).css("background-color", "")
+                        });
+                        $("#contents div").click(function () {
+                            var text = $(this).html();
+                            //<a href="ProductItem.html?pid=102"> 小米性笔10支装</a>
+                            var s1 = text.split(">");
+                            var s2 = s1[1].split("<");
+                            $("#search").val(s2[0]);
+                            $("#contents").hide();
+                        });
+                    });
+                }
+            })
+        }
+
+
+        //通过名字查询该商品的信息
+        function sousuo() {
+            $.ajax({
+                url: "/product/findByNameToInfo/" + $("#search").val(),
+                type: "get",
+                dataType: "json",
+                statusCode: {
+                    200: function (data) {
+                        location.href = "ProductItem.html?pid=" + data.pid + "";
+                    }
+                }
+            })
+        }
+    </script>
+    <div class="search fr">
+        <form action="" method="post">
+            <div class="text fl">
+                <input type="text" class="shuru" id="search" onkeyup="searchs()">
+                <div class="color" id="contents"  ></div>
+            </div>
+            <div class="submit fl">
+                <input type="button" class="sousuo" value="搜索" onclick="sousuo()"/>
+            </div>
+            <div class="clear"></div>
+        </form>
+        <div class="clear"></div>
+    </div>
+</div>
+<!-- end banner_x -->
+
+<!-- start banner_y -->
+<div class="banner_y center">
+    <div class="nav" style="background-color: rgb(88, 84, 100)">
+        <ul>
+            <li>
+                <a href="">手机 电话卡></a>
+
+                <div class="pop">
+
+                    <div class="left fl" id="dp01">
+                    </div>
+
+
+                    <div class="ctn fl" id="dp02">
+
+                    </div>
+
+                </div>
+            </li>
+
+
+            <li id="lt">
+                <a href="">电视 盒子></a>
+                <div class="pop">
+
+                    <div class="left fl" id="dt01">
+
+                    </div>
+
+                    <div class="ctn fl" id="dt02">
+
+
+                    </div>
+
+                </div>
+            </li>
+
+
+            <li id="lpc">
+                <a href="">笔记本 平板></a>
+                <div class="pop">
+
+                    <div class="left fl" id="dpc01">
+                    </div>
+
+                    <div class="ctn fl" id="dpc02">
+                    </div>
+
+                </div>
+
+            </li>
+
+            <li id="lf">
+                <a href="">家电 插线板></a>
+
+                <div class="pop">
+
+                    <div class="left fl" id="df01">
+
+                    </div>
+
+                    <div class="ctn fl" id="df02">
+
+                    </div>
+
+                </div>
+            </li>
+
+
+            <li id="lyq">
+                <a href="">智能 路由器></a>
+                <div class="pop">
+
+                    <div class="left fl" id="lyq01">
+
+
+                    </div>
+
+                    <div class="ctn fl" id="lyq02">
+
+                    </div>
+
+
+                </div>
+            </li>
+
+
+            <li id="dypj">
+                <a href="">电源 配件></a>
+                <div class="pop">
+
+                    <div class="left fl" id="dypj01">
+
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </li>
+
+
+            <li>
+                <a href="">健康 儿童></a>
+                <div class="pop">
+
+                    <div class="left fl" id="child">
+
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a href="">耳机 音箱></a>
+
+                <div class="pop">
+
+                    <div class="left fl" id="headSet">
+
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a href="">生活 箱包></a>
+                <div class="pop">
+
+                    <div class="left fl" id="boxId">
+
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="sub_banner center">
+    <div class="sidebar fl">
+        <div class="fl"><a href=""><img src="./image/hjh_01.gif"></a></div>
+        <div class="fl"><a href=""><img src="./image/hjh_02.gif"></a></div>
+        <div class="fl"><a href=""><img src="./image/hjh_03.gif"></a></div>
+        <div class="fl"><a href=""><img src="./image/hjh_04.gif"></a></div>
+        <div class="fl"><a href=""><img src="./image/hjh_05.gif"></a></div>
+        <div class="fl"><a href=""><img src="./image/hjh_06.gif"></a></div>
+        <div class="clear"></div>
+    </div>
+    <div class="datu fl"><a href="ProductItem.html?id=100"><img src="./image/xmad_15635211865515_UoyWN.jpg" alt=""></a>
+    </div>
+    <div class="datu fl"><a href="ProductItem.html?id=69"><img src="./image/xmad_15629205073681_LyRiW.jpg" alt=""></a>
+    </div>
+    <div class="datu fr"><a href="ProductItem.html?id=99"><img src="./image/xmad_1560477673797_cQPMS.jpg" alt=""></a>
+    </div>
+    <div class="clear"></div>
+
+
+</div>
+<!-- end banner -->
+<div class="tlinks">Collect from <a href="http://www.cssmoban.com/">企业网站模板</a></div>
+
+<!-- start danpin -->
+<br>
+<div class="peijian w"><a href="ProductItem.html?id=93"><img src="./image/xmad_15625126063988_sCIBm.jpg"
+                                                             style="height: 100px;width: 100%"></a></div>
+
+<div class="danpin center">
+
+    <div class="biaoti center">手机</div>
+    <div class="main center" id="sj">
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+<br>
+<div class="peijian w"><a href="liebiao.html?id=3"><img src="./image/xmad_15623199613764_JWGzK.jpg"
+                                                        style="height: 100px;width: 100%"></a></div>
+
+<div class="peijian w">
+    <div class="biaoti center">家电</div>
+    <div class="main center">
+        <div class="content" id="jd">
+
+
+            <div class="clear"></div>
+        </div>
+        <div class="content" id="jd02">
+
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="peijian w"><a href="ProductItem.html?id=56"><img src="./image/xmad_15562499146276_ZVsYu.jpg"
+                                                             style="height: 100px;width: 100%"></a></div>
+<script>
+    //智能
+    $(function () {
+        $.ajax({
+            url: "/product/findVo/" + 7,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $(data).each(function (index, product) {
+                    if (index < 5) {
+                        $("#zn01").append(
+                            "<div class=\"remen fl\">\n" +
+                            "                <div class=\"xinpin\"><span style=\"background:#fff\"></span></div>\n" +
+                            "                <div class=\"tu\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" width='150px' height='150px'></a></div>\n" +
+                            "                <div class=\"miaoshu\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                            "                <div class=\"jiage\">" + product.price + "元</div>\n" +
+                            "                <div class=\"pingjia\">372人评价</div>\n" +
+                            "            </div>"
+                        )
+                    }
+                    if (index >= 5 && index < 9) {
+                        $("#zn02").append(
+                            "<div class=\"remen fl\">\n" +
+                            "                <div class=\"xinpin\"><span style=\"background:#fff\"></span></div>\n" +
+                            "                <div class=\"tu\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" width='150px' height='150px'></a></div>\n" +
+                            "                <div class=\"miaoshu\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                            "                <div class=\"jiage\">" + product.price + "元</div>\n" +
+                            "                <div class=\"pingjia\">372人评价</div>\n" +
+                            "            </div>"
+                        )
+                    }
+                });
+                $("#zn02").append(
+                    "<div class=\"remenlast fr\">\n" +
+                    "                <div class=\"hongmi\"><a href=\"ProductItem.html?id=99\"><img src=\"./image/xmad_1560477673797_cQPMS.jpg\" alt=\"\" width='234px' height='150px'></a></div>\n" +
+                    "                <div class=\"liulangengduo\"><a href=\"liebiao.html?id=7\"><img src=\"./image/Snipaste_2019-08-02_10-11-48.png\" alt=\"\" width='234px' height='150px'></a></div>\n" +
+                    "            </div>"
+                )
+            }
+        })
+    })
+</script>
+<div class="peijian w">
+    <div class="biaoti center">智能</div>
+    <div class="main center">
+        <div class="content" id="zn01">
+
+            <div class="clear"></div>
+        </div>
+        <div class="content" id="zn02">
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="peijian w"><a href="ProductItem.html?id=101"><img src="./image/xmad_15616416915404_oeXOL.jpg"
+                                                              style="height: 100px;width: 100%"></a></div>
+<script>
+    //配件
+    $(function () {
+        $.ajax({
+            url: "/product/findVo/" + 8,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $(data).each(function (index, product) {
+                    if (index < 5) {
+                        $("#pj01").append(
+                            "<div class=\"remen fl\">\n" +
+                            "                <div class=\"xinpin\"><span style=\"background:#fff\"></span></div>\n" +
+                            "                <div class=\"tu\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" width='150px' height='150px'></a></div>\n" +
+                            "                <div class=\"miaoshu\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                            "                <div class=\"jiage\">" + product.price + "元</div>\n" +
+                            "                <div class=\"pingjia\">372人评价</div>\n" +
+                            "            </div>"
+                        )
+                    }
+                    if (index >= 5 && index < 9) {
+                        $("#pj02").append(
+                            "<div class=\"remen fl\">\n" +
+                            "                <div class=\"xinpin\"><span style=\"background:#fff\"></span></div>\n" +
+                            "                <div class=\"tu\"><a href=\"ProductItem.html?id=" + product.pid + "\"><img src=\"" + product.picture + "\" width='150px' height='150px'></a></div>\n" +
+                            "                <div class=\"miaoshu\"><a href=\"ProductItem.html?id=" + product.pid + "\">" + product.pname + "</a></div>\n" +
+                            "                <div class=\"jiage\">" + product.price + "元</div>\n" +
+                            "                <div class=\"pingjia\">372人评价</div>\n" +
+                            "            </div>"
+                        )
+                    }
+                });
+                $("#pj02").append(
+                    "<div class=\"remenlast fr\">\n" +
+                    "                <div class=\"hongmi\"><a href=\"ProductItem.html?id=16\"><img src=\"./image/qitapeijian80.jpg\" alt=\"\" width='234px' height='150px'></a></div>\n" +
+                    "                <div class=\"liulangengduo\"><a href=\"liebiao.html?id=8\"><img src=\"./image/Snipaste_2019-08-02_10-11-48.png\" alt=\"\" width='234px' height='150px'></a></div>\n" +
+                    "            </div>"
+                )
+            }
+        })
+    })
+</script>
+<div class="peijian w">
+    <div class="biaoti center">配件</div>
+    <div class="main center">
+        <div class="content" id="pj01">
+
+            <div class="clear"></div>
+        </div>
+        <div class="content" id="pj02">
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="peijian w"><a href="ProductItem.html?id=102"><img src="./image/xmad_15613709054033_Hbsyl.jpg"
+                                                              style="height: 100px;width: 100%"></a></div>
+
+<footer class="mt20 center">
+    <div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
+    <div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div>
+    <div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
+</footer>
+</body>
+</html>

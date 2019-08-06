@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="order by dede58.com"/>
+    <title>我的购物车-小米商城</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            getCart();
+        });
+
+        function QX(ss) {
+            if ($(ss).val() == "quanxuan") {
+                $("[name='xuan01']").prop("checked", false)
+                $(ss).val("")
+                $("#ck01").html(0)
+            } else {
+                $("[name='xuan01']").prop("checked", true)
+                $(ss).val("quanxuan")
+                $("#ck01").html($("[name='xuan01']").length)
+            }
+        };
+
+        function xuan(ss) {
+            $("[name='quanxuan']").prop("checked", false);
+            $("[name='quanxuan']").val("")
+            if ($(ss).attr("checked") == "checked") {
+                $(ss).attr("checked", false)
+            } else {
+                $(ss).attr("checked", true)
+            }
+            $("#ck01").html($("[name='xuan01']:checked").length)
+        };
+
+
+        function getCart() {
+            $.ajax({
+                url: "/cart/getCart",
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    if (data == "") {
+                        $("#cart01").append(
+                            "<h1 style='color: #2196f3' align='center'>您的购物车是空的!<a href='liebiao.html?id=1'><u style='color: red'>继续购物</u></a></h1>"
+                        )
+                    }
+                    $(data).each(function (index, ele) {
+                        $("#cart01").append(
+                            "<div class=\"content2 center\">\n" +
+                            "                <div class=\"sub_content fl \">\n" +
+                            "                    <input type=\"checkbox\" name='xuan01' onclick='xuan(this)' value=\"" + ele.cartitem_id + "\" class=\"quanxuan\"/>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"sub_content fl\"><img src=\"" + ele.product.picture + "\" width='80px' height='80px'></div>\n" +
+                            "                <div class=\"sub_content fl \">" + ele.product.pname + "</div>\n" +
+                            "                <div class=\"sub_content fl \">" + ele.subprice / ele.num + "元</div>\n" +
+                            "                <div class=\"sub_content fl\">\n" +
+                            "                    <input class=\"shuliang\" type=\"number\" value=\"" + ele.num + "\" step=\"1\" min=\"1\">\n" +
+                            "                </div>\n" +
+                            "                <div class=\"sub_content fl\"><b><font size='2' style=''>" + ele.subprice + "元</font></b></div>\n" +
+                            "                <div class=\"sub_content fl\"><a href=\"javascript:deleteCartItem('" + ele.cartitem_id + "')\">×</a></div>\n" +
+                            "                <div class=\"clear\"></div>\n" +
+                            "            </div>"
+                        )
+                    })
+                    $("#cart01").append(
+                        "<div class=\"jiesuandan mt20 center\">\n" +
+                        "            <div class=\"tishi fl ml20\">\n" +
+                        "                <ul>\n" +
+                        "                    <li><a href=\"liebiao.html?id=1\">继续购物</a></li>\n" +
+                        "                    <li>|</li>\n" +
+                        "                    <li>共<span>" + data.length + "</span>件商品，已选择<span id='ck01'>0</span>件</li>\n" +
+                        "                    <div class=\"clear\"></div>\n" +
+                        "                </ul>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"jiesuan fr\">\n" +
+                        // "                <div class=\"jiesuanjiage fl\">合计（不含运费）：<span id='s01'></span>元</div>\n" +
+                        "                <div class=\"jsanniu fr\"><input class=\"jsan\" type=\"button\" onclick='addOrder()' name=\"jiesuan\" value=\"加入订单\"/></div>\n" +
+                        "                <div class=\"clear\"></div>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"clear\"></div>\n" +
+                        "        </div>"
+                    )
+                }
+            })
+        };
+
+        function addOrder() {
+            var s = "";
+            $("[name='xuan01']:checked").each(function () {
+                s += $(this).val() + ",";
+            })
+            $.ajax({
+                url: "/order/addOrder/" + s,
+                type: "post",
+                statusCode: {
+                    201: function () {
+                        location.href = "myOrder.html"
+                    }
+                }
+            })
+        }
+
+        function deleteCartItem(id) {
+            var a = window.confirm("您确定要删除该商品吗？")
+            if (a) {
+                $.ajax({
+                    url: "/cart/deleteCartItem/" + id,
+                    type: "delete",
+                    statusCode: {
+                        204: function () {
+                            $("#cart01").html(
+                                "<div class=\"top2 center\">\n" +
+                                "                <div class=\"sub_top fl\">\n" +
+                                "                    <input type=\"checkbox\" name='quanxuan' onclick='QX(this)' value=\"\" class=\"quanxuan\"/>全选\n" +
+                                "                </div>\n" +
+                                "                <div class=\"sub_top fl\">商品名称</div>\n" +
+                                "                <div class=\"sub_top fl\">单价</div>\n" +
+                                "                <div class=\"sub_top fl\">数量</div>\n" +
+                                "                <div class=\"sub_top fl\">小计</div>\n" +
+                                "                <div class=\"sub_top fr\">操作</div>\n" +
+                                "                <div class=\"clear\"></div>\n" +
+                                "            </div>"
+                            )
+                            getCart();
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- start header -->
+<!--end header -->
+
+<!-- start banner_x -->
+<div class="banner_x center">
+    <a href="./index.html" target="_blank">
+        <div class="logo fl"></div>
+    </a>
+
+    <div class="wdgwc fl ml40">我的购物车</div>
+    <div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"/user/getSessionByLoginU",
+                type:"get",
+                dataType:"json",
+                success:function (data) {
+                    if (data!=""){
+                        $("#login01").html(
+                            "<li>欢迎您！"+data.username+"</li>\n" +
+                            "                    <li>|</li>\n" +
+                            "                    <li><a href=\"./register.html\" target=\"_blank\">注册</a></li>\n" +
+                            "                    <li>|</li>\n" +
+                            "                    <li><a href=\"./self_info.html\" target=\"_blank\">个人中心</a></li>\n" +
+                            "                    <li>|</li>\n" +
+                            "                    <li><a href=\"\">消息通知</a></li>\n" +
+                            "                    <li>|</li>\n" +
+                            "                    <li><a href=\"javascript:loginOut()\">退出登录</a></li>"
+                        )
+                    }
+                }
+            })
+        })
+        function loginOut() {
+            $.ajax({
+                url:"/user/loginOut",
+                type:"get"
+            })
+            location.href="login.html"
+        }
+    </script>
+    <div class="dlzc fr">
+        <ul id="login01">
+            <li><a href="./login.html" target="_blank">登录</a></li>
+            <li>|</li>
+            <li><a href="./register.html" target="_blank">注册</a></li>
+        </ul>
+
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="xiantiao"></div>
+<form id="form01" action="#" method="get">
+    <div class="gwcxqbj">
+        <div class="gwcxd center" id="cart01">
+            <div class="top2 center">
+                <div class="sub_top fl">
+                    <input type="checkbox" name='quanxuan' onclick='QX(this)' value="" class="quanxuan"/>全选
+                </div>
+                <div class="sub_top fl">商品名称</div>
+                <div class="sub_top fl">单价</div>
+                <div class="sub_top fl">数量</div>
+                <div class="sub_top fl">小计</div>
+                <div class="sub_top fr">操作</div>
+                <div class="clear"></div>
+            </div>
+            <!--<div class="content2 center">-->
+            <!--<div class="sub_content fl ">-->
+            <!--<input type="checkbox" value="quanxuan" class="quanxuan"/>-->
+            <!--</div>-->
+            <!--<div class="sub_content fl"><img src="./image/gwc_xiaomi6.jpg"></div>-->
+            <!--<div class="sub_content fl ft20">小米6全网通6GB内存+64GB 亮黑色</div>-->
+            <!--<div class="sub_content fl ">2499元</div>-->
+            <!--<div class="sub_content fl">-->
+            <!--<input class="shuliang" type="number" value="1" step="1" min="1">-->
+            <!--</div>-->
+            <!--<div class="sub_content fl">2499元</div>-->
+            <!--<div class="sub_content fl"><a href="">×</a></div>-->
+            <!--<div class="clear"></div>-->
+            <!--</div>-->
+        </div>
+        <!--<div class="jiesuandan mt20 center">-->
+        <!--<div class="tishi fl ml20">-->
+        <!--<ul>-->
+        <!--<li><a href="./liebiao.html">继续购物</a></li>-->
+        <!--<li>|</li>-->
+        <!--<li>共<span>2</span>件商品，已选择<span>1</span>件</li>-->
+        <!--<div class="clear"></div>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="jiesuan fr">-->
+        <!--<div class="jiesuanjiage fl">合计（不含运费）：<span>2499.00元</span></div>-->
+        <!--<div class="jsanniu fr"><input class="jsan" type="submit" name="jiesuan" value="加入订单"/></div>-->
+        <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<div class="clear"></div>-->
+        <!--</div>-->
+
+    </div>
+
+
+</form>
+<!-- footer -->
+<!--<footer class="center">-->
+
+<!--<div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>-->
+<!--<div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div>-->
+<!--<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>-->
+<!--</footer>-->
+
+</body>
+</html>
